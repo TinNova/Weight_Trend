@@ -1,15 +1,132 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:meta/meta.dart';
+import 'package:weight_trend/chart/weight.dart';
 
 part 'chart_event.dart';
+
 part 'chart_state.dart';
 
 class ChartBloc extends Bloc<ChartEvent, ChartState> {
-  ChartBloc() : super(ChartInitial()) {
-    on<ChartEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+
+  static List<DateTime> _dateTime = [
+    DateTime(2023, 9, 23),
+    DateTime(2023, 9, 24),
+    DateTime(2023, 9, 25),
+    DateTime(2023, 9, 26),
+    DateTime(2023, 9, 27),
+    DateTime(2023, 9, 28),
+    DateTime(2023, 9, 29),
+    DateTime(2023, 9, 30),
+    DateTime(2023, 10, 1),
+    DateTime(2023, 10, 2),
+    DateTime(2023, 10, 3),
+    DateTime(2023, 10, 4),
+    DateTime(2023, 10, 5),
+    DateTime(2023, 10, 6),
+    DateTime(2023, 10, 7),
+    DateTime(2023, 10, 8),
+    DateTime(2023, 10, 9),
+    DateTime(2023, 10, 10),
+    DateTime(2023, 10, 11),
+    DateTime(2023, 10, 12),
+    DateTime(2023, 10, 13),
+    DateTime(2023, 10, 14),
+    DateTime(2023, 10, 15),
+    DateTime(2023, 10, 16),
+    DateTime(2023, 10, 17),
+    DateTime(2023, 10, 18),
+    DateTime(2023, 10, 19),
+    DateTime(2023, 10, 20),
+    DateTime(2023, 10, 21),
+    DateTime(2023, 10, 22),
+    DateTime(2023, 10, 23),
+    DateTime(2023, 10, 24),
+    DateTime(2023, 10, 25),
+    DateTime(2023, 10, 26),
+    DateTime(2023, 10, 27),
+    DateTime(2023, 10, 28),
+    DateTime(2023, 10, 29),
+    DateTime(2023, 10, 30),
+    DateTime(2023, 10, 31),
+    DateTime(2023, 11, 1),
+    DateTime(2023, 11, 2),
+    DateTime(2023, 11, 3),
+    DateTime(2023, 11, 4),
+    DateTime(2023, 11, 5),
+    DateTime(2023, 11, 6),
+    DateTime(2023, 11, 7),
+    DateTime(2023, 11, 8),
+    DateTime(2023, 11, 9),
+    DateTime(2023, 11, 10),
+    DateTime(2023, 11, 11),
+    DateTime(2023, 11, 12),
+    DateTime(2023, 11, 13),
+    DateTime(2023, 11, 14),
+    DateTime(2023, 11, 15)
+  ];
+
+  static List<FlSpot> _spots = [
+    FlSpot(0, 77.7),
+    FlSpot(1, 77.7),
+    FlSpot(2, 77.6),
+    FlSpot(3, 76.8),
+    FlSpot(4, 76.5),
+    FlSpot(5, 76.6),
+    FlSpot(6, 76.3),
+    FlSpot(7, 75.9),
+    FlSpot(8, 76.6),
+    FlSpot(9, 76.9),
+    FlSpot(10, 76.1),
+    FlSpot(11, 76.2),
+    FlSpot(12, 76),
+    FlSpot(13, 75.5),
+    FlSpot(14, 75.2),
+    FlSpot(15, 76.1),
+    FlSpot(16, 75.8),
+    FlSpot(17, 75.1),
+    FlSpot(18, 75.9),
+    FlSpot(19, 76.1),
+    FlSpot(20, 75.2),
+    FlSpot(21, 75.3),
+    FlSpot(22, 75.5),
+    FlSpot(23, 75.8),
+    FlSpot(24, 74.8),
+    FlSpot(25, 75.4),
+    FlSpot(26, 74.3),
+    FlSpot(27, 74.2),
+    FlSpot(28, 74.1),
+    FlSpot(29, 74.8),
+    FlSpot(30, 74.6),
+    FlSpot(31, 74.1),
+    FlSpot(32, 73.9),
+    FlSpot(33, 73.1),
+    FlSpot(34, 73.3),
+    FlSpot(35, 74.3),
+    FlSpot(36, 74.3),
+    FlSpot(37, 74),
+    FlSpot(38, 74),
+    FlSpot(39, 73.5),
+    FlSpot(40, 73.2),
+    FlSpot(41, 72.8),
+    FlSpot(42, 73.6),
+    FlSpot(43, 73.5),
+    FlSpot(44, 73.9),
+    FlSpot(45, 73.8),
+    FlSpot(46, 72.8),
+    FlSpot(47, 72.8),
+    FlSpot(48, 73),
+    FlSpot(49, 73.6),
+    FlSpot(50, 73.6),
+    FlSpot(51, 73.5),
+    FlSpot(52, 73.1),
+    FlSpot(53, 73.1),
+  ];
+
+  ChartBloc() : super(ChartInitial(Weight(_dateTime, _spots), Weight([], []))) {
+
   }
 }

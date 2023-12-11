@@ -1,6 +1,15 @@
 part of 'chart_bloc.dart';
 
-@immutable
-abstract class ChartState {}
+sealed class ChartState extends Equatable {
+  const ChartState(this.weight, this.trend);
 
-class ChartInitial extends ChartState {}
+  final Weight weight;
+  final Weight trend;
+}
+
+  final class ChartInitial extends ChartState {
+  ChartInitial(weight, trend) : super(weight, trend);
+
+  @override
+  List<Object?> get props => [weight, trend];
+}

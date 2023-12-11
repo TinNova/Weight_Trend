@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LineChartSample1(),
+      home: ChartScreen(),
 
       ///Use the below commented out code once you have more screens
       // initialRoute: MainScreen.id,
